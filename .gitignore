@@ -1,0 +1,10 @@
+# Never commit device data or binaries
+backup-*/
+diag-*/
+*.apk
+*.keystore
+*.jks
+device.txt
+disabled.txt
+installed.txt
+.DS_Store
