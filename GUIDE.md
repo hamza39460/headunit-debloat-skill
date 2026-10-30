@@ -11,7 +11,7 @@ Take your time with it. Nothing here needs to be done in one sitting, and every 
 3. [Put the head unit and laptop on the same Wi-Fi](#3-put-the-head-unit-and-laptop-on-the-same-wi-fi)
 4. [Find the head unit's IP address](#4-find-the-head-units-ip-address)
 5. [Connect with ADB](#5-connect-with-adb)
-6. [Install Claude Code and the skill](#6-install-claude-code-and-the-skill)
+6. [Using Claude Code](#6-using-claude-code) (new to Claude Code? start here)
 7. [Start the debloat](#7-start-the-debloat)
 8. [Review the backup and the classification](#8-review-the-backup-and-the-classification)
 9. [Approve the batches and test the car](#9-approve-the-batches-and-test-the-car)
@@ -167,19 +167,98 @@ Newer units use pairing instead of port 5555:
 
 With ADB on over the network, anyone on the same Wi-Fi can control the head unit, often with full root access. Only connect it to networks you trust, and avoid public Wi-Fi with ADB on.
 
-## 6. Install Claude Code and the skill
+## 6. Using Claude Code
 
-1. Install Claude Code by following https://claude.com/claude-code
-2. Install the skill:
-   ```bash
-   git clone https://github.com/hamza39460/headunit-debloat-skill.git
-   mkdir -p ~/.claude/skills
-   cp -r headunit-debloat-skill/headunit-debloat ~/.claude/skills/
-   ```
-3. Open a terminal and start Claude Code:
-   ```bash
-   claude
-   ```
+Never used Claude Code before? This section covers everything you need for this project.
+
+### What it is
+
+Claude Code is Claude (the AI from Anthropic) running in your terminal. Unlike the chat website, it can run commands on your computer, like `adb`, read their output and decide what to do next. That's what makes this work: Claude talks to your head unit through adb while you watch and approve.
+
+### What you need
+
+A paid Claude plan (Pro, Max, Team or Enterprise) or an Anthropic Console (API) account. The free claude.ai plan doesn't include Claude Code.
+
+### Install it
+
+**Mac, Linux or WSL:**
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+**Windows PowerShell:**
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+**Or with Homebrew on a Mac:**
+```bash
+brew install --cask claude-code
+```
+
+Open a new terminal window and check it worked:
+```bash
+claude --version
+```
+
+If it says `command not found`, see the [official install troubleshooting](https://code.claude.com/docs/en/troubleshoot-install.md). For everything else about installing, see https://code.claude.com/docs/en/setup.
+
+Prefer not to use a terminal? There's also a Claude desktop app with Claude Code built in. The skill works there too.
+
+### Log in
+
+Run:
+```bash
+claude
+```
+The first time, it opens your browser to log in with your Claude account. After that it starts straight away.
+
+### Install the skill
+
+A "skill" is a folder of instructions and scripts that teaches Claude how to do a specific job. This one teaches it the safe way to debloat a head unit. Personal skills live in `~/.claude/skills/`.
+
+```bash
+git clone https://github.com/hamza39460/headunit-debloat-skill.git
+mkdir -p ~/.claude/skills
+cp -r headunit-debloat-skill/headunit-debloat ~/.claude/skills/
+```
+
+Check Claude can see it: start `claude` and type `/skills`. You should see `headunit-debloat` in the list. No restart needed if Claude Code was already running.
+
+### How the skill gets used
+
+You don't have to run the skill yourself. When you ask about your head unit, Claude notices the request matches the skill and loads it on its own.
+
+If you want to be sure, start your message with the skill's name:
+
+```
+/headunit-debloat my head unit is at 192.168.1.50:5555
+```
+
+### Permission prompts
+
+Before Claude runs a command, it asks you. You'll see the command and options like **Yes**, **Yes, and don't ask again** for that kind of command, or **No**.
+
+- **Read the commands.** For this project they should be `adb` commands that read information, the skill's scripts (`backup.sh`, `disable.sh`, `health.sh`), or `pm disable-user`.
+- Saying "don't ask again" for harmless read commands saves time. For anything that changes the head unit, it's worth approving each one.
+- If you see `pm uninstall`, anything touching `/system`, or anything you don't understand, say **No** and ask Claude why it wants to run it.
+
+### Talking to it
+
+Just type normally, like you're messaging someone who knows Android well.
+
+- Say what you use in the car. "I use Bluetooth music, calls, reverse camera and Google Maps" is the most useful sentence you can type.
+- Ask why. "Why is this app safe to disable?" is a fine question at any point.
+- Say no. "Skip YouTube in this batch, I use it" works.
+- If you're in the car, say so. "I'm testing now, wait for me" works too.
+
+### Stopping and coming back
+
+- Press **Esc** to stop Claude in the middle of something. Then type what you want instead.
+- Type `/exit` (or press Ctrl+C twice) to quit.
+- To continue later where you left off, run `claude --continue` in the same folder. `claude --resume` lets you pick from older sessions.
+
+Claude also keeps `~/headunit-debloat/log.md` up to date, so even in a fresh session you can say "read my log.md and continue".
 
 ## 7. Start the debloat
 

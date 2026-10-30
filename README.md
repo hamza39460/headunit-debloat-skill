@@ -38,7 +38,7 @@ mkdir -p ~/.claude/skills
 cp -r headunit-debloat-skill/headunit-debloat ~/.claude/skills/
 ```
 
-Then open Claude Code anywhere and ask it to debloat your head unit.
+Then open Claude Code anywhere and ask it to debloat your head unit. New to Claude Code? See [Using Claude Code](GUIDE.md#6-using-claude-code) in the guide.
 
 Works on macOS and Linux. On Windows, use WSL or Git Bash.
 
