@@ -95,7 +95,7 @@ There are still occasional resets where both USB controllers drop at the same mo
 
 A few people asked for the code. The honest answer is that my exact list of disabled apps is useless for anyone else. Different firmware, different vendor apps, different names. What's actually useful is the *process*: back up, classify carefully, undo script first, small batches, check the car still works.
 
-So I turned that process into a Claude Code skill. You install it, tell Claude your head unit's IP, and it follows the same careful steps on your unit, asking you about anything it doesn't recognize. It also has the CarPlay notes and the USB connection fixes. It's here: **https://github.com/hamza39460/headunit-debloat-skill**
+So I turned that process into a Claude Code skill. You install it, tell Claude your head unit's IP, and it follows the same careful steps on your unit, asking you about anything it doesn't recognize. It also has the CarPlay notes and the USB connection fixes. It's here: **https://github.com/hamza39460/headunit-debloat-skill**. If you want to try it, there's a step-by-step guide in the repo ([GUIDE.md](GUIDE.md)) that starts from installing adb and finding your head unit's IP.
 
 I've only tested it on my own unit, so if you try it on yours, let me know how it goes.
 

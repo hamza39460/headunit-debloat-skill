@@ -2,7 +2,10 @@
 
 A [Claude Code](https://claude.com/claude-code) skill that safely cleans up and speeds up cheap Android car head units (PX5/PX6, FYT, Topway, TS10, MTCD and the many "Alpine"/"Pioneer" clones) over ADB. It can also help you get wired Apple CarPlay working with [DiPlay](https://github.com/shihabal3amri/DiPlay).
 
-I built this after doing it on my own car. The unit in my 2025 Corolla Altis 1.6 had ~650 MB of free RAM and was too slow to use. After the debloat it has ~1.5 GB free and runs CarPlay. The write-up is in [BLOG.md](BLOG.md).
+I built this after doing it on my own car. The unit in my 2025 Corolla Altis 1.6 had ~650 MB of free RAM and was too slow to use. After the debloat it has ~1.5 GB free and runs CarPlay.
+
+- **[GUIDE.md](GUIDE.md)**: step-by-step instructions, from installing adb and finding your head unit's IP to CarPlay and troubleshooting
+- **[BLOG.md](BLOG.md)**: the story of how this started
 
 ## What it does
 
@@ -47,7 +50,7 @@ You need ADB working before anything else. Make sure the head unit and your lapt
 
 On a lot of Chinese head units, ADB over Wi-Fi is already on, even when Developer options are hidden or turned off. Mine was like that: the firmware opens port 5555 at every boot.
 
-1. Find the head unit's IP: Settings → Wi-Fi → tap the connected network. Or check your router's / hotspot's connected devices.
+1. Find the head unit's IP: Settings → Wi-Fi → tap the connected network. Or check your router's / hotspot's connected devices. More ways, including scanning your network for it, are in [GUIDE.md](GUIDE.md#4-find-the-head-units-ip-address).
 2. Connect:
    ```bash
    adb connect 192.168.1.50:5555
@@ -93,6 +96,7 @@ headunit-debloat/              the skill (copy this folder to ~/.claude/skills/)
   references/classify.md       how to sort packages into SAFE / ASK / RISKY / KEEP
   references/carplay.md        DiPlay, wireless check, slow connection fixes
   references/example-px5.md    my unit, as a worked example
+GUIDE.md                       step-by-step instructions
 BLOG.md                        the story of how this started
 ```
 
