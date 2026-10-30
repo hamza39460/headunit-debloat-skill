@@ -65,7 +65,7 @@ Find which port is direct:
 adb shell 'for d in /sys/bus/usb/devices/*; do [ -f $d/idVendor ] && echo "$(basename $d) $(cat $d/idVendor):$(cat $d/idProduct) $(cat $d/product 2>/dev/null)"; done'
 ```
 
-Apple devices show as vendor `05ac`. A path like `1-1.3` sits behind a hub (`1-1`); a path like `3-1` hangs straight off a root controller. Ask the owner to try each physical port and run it again. On one PX5 unit the dashboard port with a "3G/USB" sticker was the direct one.
+Apple devices show as vendor `05ac`. A path like `1-1.3` sits behind a hub (`1-1`); a path like `3-1` hangs straight off a root controller. Ask the owner to try each physical port and run it again. On one PX5 unit the glove box port with a "3G/USB" sticker was the direct one, and the port next to the cigarette lighter was behind the hub.
 
 DiPlay also has a charging setting: Settings → USB connection → iPhone charging (Normal / Reduced / Low). Low draws the least current and helps on weak ports.
 

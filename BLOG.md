@@ -82,7 +82,7 @@ Wired CarPlay worked, but it took around a minute to connect every time. Sometim
 
 This is where having Claude read the logs really paid off. The kernel log showed the iPhone dropping off USB and coming back, over and over. The unit has an internal USB hub, and the port I was using sat behind it. The Wi-Fi chip is on the same hub. So whenever the hub reset, it took both CarPlay and Wi-Fi down, and Android didn't turn Wi-Fi back on.
 
-There are two USB ports. The one on the dashboard has a sticker saying "3G/USB", and it turned out to be wired straight to the processor, not through the hub. Moving the phone there, lowering the iPhone charging current in DiPlay's settings, and turning off Auto-Lock on the iPhone (it was locking the screen in the middle of setup) brought it down to **about 4 seconds** from plugging in to seeing CarPlay.
+There are two USB ports. The one I was using is next to the cigarette lighter. The other one is in the glove box, has a sticker saying "3G/USB", and it turned out to be wired straight to the processor, not through the hub. Moving the phone there, lowering the iPhone charging current in DiPlay's settings, and turning off Auto-Lock on the iPhone (it was locking the screen in the middle of setup) brought it down to **about 4 seconds** from plugging in to seeing CarPlay.
 
 There are still occasional resets where both USB controllers drop at the same moment. That looks like a power or ground problem in the car wiring, not software, so that's a job for another day.
 

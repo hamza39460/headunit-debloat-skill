@@ -55,5 +55,5 @@ Notes:
 
 - DiPlay 0.2.22, wired: works.
 - Wireless: impossible (no Android Bluetooth controller, 2.4 GHz Wi-Fi).
-- First connect took ~1 minute with repeated USB drops. The fix: the dashboard port marked "3G/USB" (wired straight to the SoC, not via the hub), DiPlay iPhone charging set to Low, and iPhone Auto-Lock off. Result: picture in ~4 seconds.
+- First connect took ~1 minute with repeated USB drops. The fix: the glove box port marked "3G/USB" (wired straight to the SoC, not via the hub), DiPlay iPhone charging set to Low, and iPhone Auto-Lock off. Result: picture in ~4 seconds.
 - Occasional resets of both USB controllers at once point to a power/ground problem in the car wiring, not software.

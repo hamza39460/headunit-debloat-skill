@@ -399,7 +399,7 @@ Or check yourself while the iPhone is plugged in:
 ```bash
 adb shell 'for d in /sys/bus/usb/devices/*; do [ -f $d/idVendor ] && echo "$(basename $d) $(cat $d/idVendor):$(cat $d/idProduct) $(cat $d/product 2>/dev/null)"; done'
 ```
-The iPhone shows up as `05ac:...`. A short path like `3-1` is a direct port. A path like `1-1.3` means it's behind a hub. On my unit the direct port was the dashboard one with a "3G/USB" sticker.
+The iPhone shows up as `05ac:...`. A short path like `3-1` is a direct port. A path like `1-1.3` means it's behind a hub. On my unit the direct port was the one in the glove box with a "3G/USB" sticker. The one next to the cigarette lighter was behind the hub.
 
 With the direct port, Low charging and Auto-Lock off, my CarPlay comes up about 4 seconds after plugging in.
 
